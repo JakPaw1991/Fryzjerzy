@@ -1,4 +1,4 @@
-package com.model;
+package com.persistence.model;
 
 
 import javax.persistence.Entity;
@@ -7,8 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "User")
-public class User {
+@Table(name = "clients")
+public class Client {
 
     @Id
     @GeneratedValue
@@ -18,11 +18,11 @@ public class User {
     private String password;
     private String email;
 
-    public User() {
+    public Client() {
         super();
     }
 
-    public User(Long id, String name, String lastName, String password, String email) {
+    public Client(Long id, String name, String lastName, String password, String email) {
         this.userId = id;
         this.name = name;
         this.lastName = lastName;
@@ -64,7 +64,7 @@ public class User {
 
     @Override
     public String toString() {
-        return String.format("User id%d email:%s\n %s %s\n", userId, email, name, lastName);
+        return String.format("Client id%d email:%s\n %s %s\n", userId, email, name, lastName);
     }
 
 }

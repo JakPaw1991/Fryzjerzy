@@ -1,17 +1,29 @@
 package com;
 
 
+import com.util.JPAUtil;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
+
+import javax.persistence.EntityManager;
 
 @SpringBootApplication
 public class Application {
     public static void main(String[] args) {
-        ApplicationContext applicationContext = SpringApplication.run(Application.class, args);
+        SpringApplication.run(Application.class, args);
+        EntityManager entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
+        entityManager.getTransaction().begin();
 
-//        for (String name : applicationContext.getBeanDefinitionNames()) {
-//            System.out.println(name);
-//        }
+        // Check database version
+        String sql = "select version()";
+
+        String result = (String) entityManager.createNativeQuery(sql).getSingleResult();
+        System.out.println(result);
+
+        entityManager.getTransaction().commit();
+        entityManager.close();
+
+        JPAUtil.shutdown();
+
     }
 }
