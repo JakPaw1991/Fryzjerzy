@@ -22,7 +22,8 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.10</java.version>
+        <java.version>1.8</java.version>
+        <org.apache.maven.surefire.plugins>2.22.1</org.apache.maven.surefire.plugins>
     </properties>
     <build>
         <plugins>
@@ -30,7 +31,17 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.Application</mainClass>
+                    <mainClass>com.FryzjerappbackendApplication</mainClass>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${org.apache.maven.surefire.plugins}</version>
+                <configuration>
+                    <includes>
+                        <include>Sample.java</include>
+                    </includes>
                 </configuration>
             </plugin>
         </plugins>
