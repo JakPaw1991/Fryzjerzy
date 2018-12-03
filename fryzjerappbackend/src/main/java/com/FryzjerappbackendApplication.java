@@ -40,7 +40,7 @@ public class FryzjerappbackendApplication implements ApplicationRunner {
 
         System.out.println("foundClient = " + foundClient);
 
-        clientRepository.deleteById(managedClient.getId());
+//        clientRepository.deleteById(managedClient.getId());
 
         final int thirdSize = clientRepository.findAll().size();
         System.out.println("thirdSize = " + thirdSize);
